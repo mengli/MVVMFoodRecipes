@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import study.android.foodrecipes.models.Recipe
 import study.android.foodrecipes.models.ResultWrapper
 import study.android.foodrecipes.repositories.RecipeRepository
-import study.android.foodrecipes.response.RecipeResponse
 
 class RecipeViewModel : ViewModel() {
 
@@ -29,9 +28,9 @@ class RecipeViewModel : ViewModel() {
     suspend fun getRecipeApi(rid: String) {
         loadStatus.postValue(LoadStatus.LOADING)
         when(val resultWrapper = recipeRepository.getRecipeApi(rid)) {
-            is ResultWrapper.Success<RecipeResponse> -> {
+            is ResultWrapper.Success<Recipe> -> {
                 loadStatus.postValue(LoadStatus.DONE)
-                recipe.postValue(resultWrapper.value.recipe)
+                recipe.postValue(resultWrapper.value)
             }
             is ResultWrapper.GenericError -> {
                 Log.e(TAG, "HTTP error: ${resultWrapper.error}")

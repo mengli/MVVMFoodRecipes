@@ -1,8 +1,8 @@
 package study.android.foodrecipes.repositories
 
+import study.android.foodrecipes.models.Recipe
 import study.android.foodrecipes.models.ResultWrapper
 import study.android.foodrecipes.requests.RecipeApiClient
-import study.android.foodrecipes.response.RecipeResponse
 import study.android.foodrecipes.response.RecipeSearchResponse
 
 object RecipeRepository {
@@ -18,7 +18,7 @@ object RecipeRepository {
 
     suspend fun getRecipeApi(
         rid: String
-    ): ResultWrapper<RecipeResponse> {
+    ): ResultWrapper<Recipe> {
         return recipeApiClient.getRecipeApi(rid)
     }
 }

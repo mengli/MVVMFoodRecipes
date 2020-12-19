@@ -4,7 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
-import study.android.foodrecipes.response.RecipeResponse
+import study.android.foodrecipes.models.Recipe
 import study.android.foodrecipes.response.RecipeSearchResponse
 
 interface RecipeApi {
@@ -12,7 +12,7 @@ interface RecipeApi {
     @GET("get")
     suspend fun getRecipe(
         @Header("Authorization") token: String,
-        @Query("id") id: String): Response<RecipeResponse>
+        @Query("id") id: String): Response<Recipe>
 
     @GET("search")
     suspend fun searchRecipe(

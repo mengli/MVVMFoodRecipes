@@ -61,7 +61,7 @@ class RecipeRecyclerAdapter(private val onRecipeClickListener: OnRecipeClickList
                 val requestOptions = RequestOptions().placeholder(R.drawable.ic_launcher_background)
                 Glide.with(recipeViewHolder.itemView.context)
                     .setDefaultRequestOptions(requestOptions)
-                    .load(recipes[position].featured_image).into(recipeViewHolder.image)
+                    .load(recipes[position].featuredImage).into(recipeViewHolder.image)
             }
             RecipeViewType.ERROR.ordinal -> {
                 val errorViewHolder = holder as ErrorViewHolder

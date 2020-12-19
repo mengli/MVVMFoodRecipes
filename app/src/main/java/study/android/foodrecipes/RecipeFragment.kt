@@ -79,7 +79,7 @@ class RecipeFragment : Fragment() {
                     .error(R.drawable.ic_launcher_background)
                 Glide.with(requireContext())
                     .setDefaultRequestOptions(requestOptions)
-                    .load(recipe.featured_image).into(it.findViewById(R.id.recipe_detail_image))
+                    .load(recipe.featuredImage).into(it.findViewById(R.id.recipe_detail_image))
                 it.findViewById<TextView>(R.id.recipe_detail_title).text = recipe.title
                 it.findViewById<TextView>(R.id.recipe_detail_social_score).text =
                     recipe.rating.toString()

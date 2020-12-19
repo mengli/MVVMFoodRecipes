@@ -1,8 +1,8 @@
 package study.android.foodrecipes.requests
 
 import android.util.Log
+import study.android.foodrecipes.models.Recipe
 import study.android.foodrecipes.models.ResultWrapper
-import study.android.foodrecipes.response.RecipeResponse
 import study.android.foodrecipes.response.RecipeSearchResponse
 import study.android.foodrecipes.utils.AUTHORIZATION
 import java.io.IOException
@@ -37,7 +37,7 @@ object RecipeApiClient {
 
     suspend fun getRecipeApi(
             rid: String
-    ): ResultWrapper<RecipeResponse> {
+    ): ResultWrapper<Recipe> {
         Log.d(TAG, "getRecipeApi")
         return try {
             val getResponse = ServiceGenerator.getRecipeApi().getRecipe(AUTHORIZATION, rid)

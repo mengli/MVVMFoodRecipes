@@ -40,15 +40,15 @@ class RecipeListViewModel : ViewModel() {
         loadStatus.postValue(LoadStatus.LOADING)
         when(val resultWrapper = recipeRepository.searchRecipeApi(query, page)) {
             is ResultWrapper.Success<RecipeSearchResponse> -> {
-                if (resultWrapper.value.recipes.isNullOrEmpty()) {
+                if (resultWrapper.value.results.isNullOrEmpty()) {
                     loadStatus.postValue(LoadStatus.END)
                 } else {
                     loadStatus.postValue(LoadStatus.DONE)
                     if (page == 1) {
-                        recipes.postValue(resultWrapper.value.recipes)
+                        recipes.postValue(resultWrapper.value.results)
                     } else {
                         val currentRecipeList = recipes.value?.toMutableList()
-                        resultWrapper.value.recipes.let { currentRecipeList?.addAll(it) }
+                        resultWrapper.value.results.let { currentRecipeList?.addAll(it) }
                         recipes.postValue(currentRecipeList)
                     }
                 }

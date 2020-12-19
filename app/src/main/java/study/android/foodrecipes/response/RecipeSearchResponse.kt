@@ -8,13 +8,21 @@ class RecipeSearchResponse {
 
     @SerializedName("count")
     @Expose()
-    var count: Int = 0
+    val count: Int = 0
 
-    @SerializedName("recipes")
+    @SerializedName("next")
     @Expose()
-    lateinit var recipes: List<Recipe>
+    val next: String? = null
+
+    @SerializedName("previous")
+    @Expose()
+    val previous: String? = null
+
+    @SerializedName("results")
+    @Expose()
+    val results: List<Recipe>? = null
 
     override fun toString(): String {
-        return "RecipeSearchResponse(count=$count, recipes=$recipes)"
+        return "RecipeSearchResponse(count=$count, recipes=$results)"
     }
 }

@@ -11,7 +11,6 @@ import study.android.foodrecipes.R
 import study.android.foodrecipes.models.Recipe
 import study.android.foodrecipes.viewmodels.RecipeListViewModel.LoadStatus
 import java.util.LinkedList
-import kotlin.math.roundToInt
 
 class RecipeRecyclerAdapter(private val onRecipeClickListener: OnRecipeClickListener) :
     Adapter<ViewHolder>() {
@@ -58,11 +57,11 @@ class RecipeRecyclerAdapter(private val onRecipeClickListener: OnRecipeClickList
                 recipeViewHolder.title.text = recipes[position].title
                 recipeViewHolder.publisher.text = recipes[position].publisher
                 recipeViewHolder.socialScore.text =
-                    recipes[position].social_rank.roundToInt().toString()
+                    recipes[position].rating.toString()
                 val requestOptions = RequestOptions().placeholder(R.drawable.ic_launcher_background)
                 Glide.with(recipeViewHolder.itemView.context)
                     .setDefaultRequestOptions(requestOptions)
-                    .load(recipes[position].image_url).into(recipeViewHolder.image)
+                    .load(recipes[position].featured_image).into(recipeViewHolder.image)
             }
             RecipeViewType.ERROR.ordinal -> {
                 val errorViewHolder = holder as ErrorViewHolder

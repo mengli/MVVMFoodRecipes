@@ -79,7 +79,7 @@ class RecipeListFragment : Fragment(), OnRecipeClickListener {
     override fun onRecipeClick(position: Int) {
         val action =
             RecipeListFragmentDirections.nextAction(
-                recipeRecyclerAdapter.getRecipes(position).recipe_id!!)
+                recipeRecyclerAdapter.getRecipes(position).pk!!)
         findNavController().navigate(action)
     }
 
